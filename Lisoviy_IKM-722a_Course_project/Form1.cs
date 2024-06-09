@@ -99,7 +99,9 @@ namespace Lisoviy_IKM_722a_Course_project
 
         private void новийToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            MajorObject.NewRec();
+            tbInput.Clear();// очистити вміст тексту
+            label1.Text = "";
         }
 
         private void проПрограмуToolStripMenuItem_Click(object sender, EventArgs e)
@@ -113,12 +115,11 @@ namespace Lisoviy_IKM_722a_Course_project
             
                 if (stdSave.ShowDialog() == DialogResult.OK) // Виклик діалогового вікна збереження
                 {
-                    {
-                        MajorObject.WriteSaveFileName(stdSave.FileName); // написання імені файлу
-                        MajorObject.SaveToFile(); // метод збереження в файл
+                MajorObject.WriteSaveFileName(stdSave.FileName); // Запис імені файлу для збереження
+                MajorObject.Generator();
+                MajorObject.SaveToFile(); // метод збереження в файл
 
-                    }
-                }
+            }
             
         }
         private void відкритиToolStripMenuItem_Click(object sender, EventArgs e)
@@ -153,6 +154,27 @@ string disk = "";
             }
 
             MessageBox.Show(disk, "Накопичувачі");
+        }
+
+        private void зберегтиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MajorObject.SaveFileNameExists()) // задане ім’я файлу існує?
+                MajorObject.SaveToFile(); // зберегти дані в файл
+            else
+                зберегтиЯкToolStripMenuItem_Click(sender, e);//
+        }
+
+        private void stdSave_FileOk(object sender, CancelEventArgs e)
+        {
+
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (MajorObject.Modify)
+                if (MessageBox.Show("Дані не були збережені. Продовжити вихід?", "УВАГА",
+                MessageBoxButtons.YesNo) == DialogResult.No)
+                    e.Cancel = true; // припинити закриття
         }
     }
 }

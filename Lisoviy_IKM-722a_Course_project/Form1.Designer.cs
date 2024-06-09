@@ -154,6 +154,7 @@
             this.зберегтиToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
             this.зберегтиToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.зберегтиToolStripMenuItem.Text = "Зберегти";
+            this.зберегтиToolStripMenuItem.Click += new System.EventHandler(this.зберегтиToolStripMenuItem_Click);
             // 
             // зберегтиЯкToolStripMenuItem
             // 
@@ -212,9 +213,17 @@
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(177, 6);
             // 
+            // stdSave
+            // 
+            this.stdSave.DefaultExt = "SoM";
+            this.stdSave.Filter = "рабочие файлы|*.SoM|Все файлы|*.*";
+            this.stdSave.FileOk += new System.ComponentModel.CancelEventHandler(this.stdSave_FileOk);
+            // 
             // ofdOpen
             // 
+            this.ofdOpen.DefaultExt = "SoM";
             this.ofdOpen.FileName = "openFileDialog1";
+            this.ofdOpen.Filter = "рабочие файлы|*.SoM|Все файлы|*.*";
             // 
             // Form1
             // 
@@ -228,6 +237,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "Form1";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
