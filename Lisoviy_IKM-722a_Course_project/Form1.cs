@@ -22,6 +22,7 @@ namespace Lisoviy_IKM_722a_Course_project
         private void Form1_Load(object sender, EventArgs e)
         {
             MajorObject = new MajorWork();
+            MajorObject.SetTime();
             this.Mode = true;
             About A = new About(); // створення форми About
 
@@ -33,7 +34,7 @@ namespace Lisoviy_IKM_722a_Course_project
         {
             tClock.Stop();
             MessageBox.Show("Минуло 25 секунд", "Увага");// Виведення повідомлення "Минуло 25 секунд" на екран
-tClock.Start();
+            tClock.Start();
         }
 
         private void bStart_Click(object sender, EventArgs e)
@@ -75,6 +76,13 @@ tClock.Start();
                 tClock.Start();
                 e.KeyChar = (char)0;
             }
+        }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            string s;
+            s = (System.DateTime.Now - MajorObject.GetTime()).ToString();
+            MessageBox.Show(s, "Час роботи програми"); // Виведення часу роботи програми і
         }
     }
 }
