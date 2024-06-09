@@ -24,6 +24,7 @@ namespace Lisoviy_IKM_722a_Course_project
         {
             MajorObject = new MajorWork();
             MajorObject.SetTime();
+            MajorObject.Modify = false;// заборона запису
             this.Mode = true;
             About A = new About(); // створення форми About
 
@@ -109,13 +110,17 @@ namespace Lisoviy_IKM_722a_Course_project
 
         private void зберегтиЯкToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (stdSave.ShowDialog() == DialogResult.OK)// Виклик діалогового вікна збереження
-                
-{
-                MessageBox.Show(stdSave.FileName);
-            }
-        }
+            
+                if (stdSave.ShowDialog() == DialogResult.OK) // Виклик діалогового вікна збереження
+                {
+                    {
+                        MajorObject.WriteSaveFileName(stdSave.FileName); // написання імені файлу
+                        MajorObject.SaveToFile(); // метод збереження в файл
 
+                    }
+                }
+            
+        }
         private void відкритиToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (ofdOpen.ShowDialog() == DialogResult.OK) // Виклик діалогового вікна відкриття
