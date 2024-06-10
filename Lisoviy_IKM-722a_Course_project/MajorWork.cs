@@ -71,8 +71,8 @@ namespace Lisoviy_IKM_722a_Course_project
                 D.Result = Convert.ToString(this.Result);
                 D.Key = Key;
                 Key++;
-                D.Key = Key;
-                BinaryFormatter BF = new BinaryFormatter(); // створення об'єкта для форматування BF.Serialize(S, D);
+                BinaryFormatter BF = new BinaryFormatter(); // створення об'єкта для форматування
+                BF.Serialize(S, D);
                 S.Flush(); // очищення буфера потоку
                 S.Close(); // закриття потоку
                 this.Modify = false; // Заборона повторного запису
@@ -83,6 +83,7 @@ namespace Lisoviy_IKM_722a_Course_project
                 MessageBox.Show("Помилка роботи з файлом"); // Виведення на екран повідомлення "Помилjrроботи з файлом"
             }
         }
+
         public void ReadFromFile(System.Windows.Forms.DataGridView DG) // зчитування з файлу
         {
             try
